@@ -74,3 +74,35 @@ Output:
 3 : 5
 ```
 Returns `false` if failed and returns Tablified `Object` if successful.
+### individual
+This type takes a mandatory `Object` and no `Delimiter`. The `Object` must be either of type `number` or `string` 
+Code:
+```lua
+local Tablify = require("tablify")
+local String = "Hello"
+local TablifiedString = Tablify.Execute("INDIVIDUAL", String)
+local Integer = 3.1415
+local TablifiedInteger = Tablify.Execute("INDIVIDUAL", Integer)
+-- Now printing out all of the values
+for i, v in ipairs(TablifiedString) do
+  io.write(i, " : ", v, "\n")
+end
+for i, v in ipairs(TablifiedInteger) do
+  io.write(i, " : ", v, "\n")
+end
+```
+Output:
+```
+1 : H
+2 : e
+3 : l
+4 : l
+5 : o
+1 : 3
+2 : .
+3 : 1
+4 : 4
+5 : 1
+6 : 5
+```
+Returns `false` if failed and returned Tablified `Object` if successful.
