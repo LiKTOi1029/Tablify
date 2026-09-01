@@ -74,7 +74,7 @@ Output:
 3 : 5
 ```
 Returns `false` if failed and returns Tablified `Object` if successful.
-### individual
+### INDIVIDUAL
 This type takes a mandatory `Object` and no `Delimiter`. The `Object` must be either of type `number` or `string` 
 Code:
 ```lua
