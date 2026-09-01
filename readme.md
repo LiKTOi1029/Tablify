@@ -46,8 +46,8 @@ so as to make it easier to use this readme.md as a documentation in of itself.
 ### NORMAL
 This type takes a mandatory `Delimiter` and `Object`. The `Object` must be either of type `number` or `string` 
 and the `Delimiter` must be of either `number` type or `string` type. Be warned, the script automatically 
-converts `Delimiter` data-type to correspond to `Object` data-type I.E. if `Object` is of `string` type, then 
-`Delimiter` is converted into `string` type as well.\
+converts `Delimiter` data-type to correspond to `Object` data-type I.E. `Object` is converted to `string` type 
+and Delimiter likewise regardless of whether or not either one is a `number` or `string` type. **This is not entirely intentional behavior and will see revisions in the not-too-distant future**\
 Code: 
 ```lua
 local Tablify = require("tablify")
