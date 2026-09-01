@@ -6,7 +6,10 @@ Tablify.Operations =
 	  local ParsingString, ResultingTable, Len = "", {}, Object:len()
 	  for Index = 1, Len, 1 do
 		local Sub = Object:sub(Index, Index)
-		if Index == Len then
+		if Index == Len and Sub == Delimiter then
+		  ResultingTable[#ResultingTable] = ParsingString
+		  ParsingString = nil
+		elseif Index == Len then
 		  ParsingString = ParsingString .. Sub
 		  ResultingTable[#ResultingTable] = ParsingString
 		  ParsingString = nil
@@ -17,7 +20,30 @@ Tablify.Operations =
 		  ParsingString = ParsingString .. Sub
 		end
 	  end
+	  return Object
+	elseif type(Object) == "number" then
+	  local ParsingString, ResultingTable, Object = "", {}, tostring(Object)
+	  local Len = Object:len()
+	  for Index = 1, Len, 1 do
+		local Sub = Object:sub(Index, Index)
+		if Index == Len and Sub == Delimiter then
+		  ResultingTable[#ResultingTable] = ParsingString
+		  ParsingString = nil
+		elseif Index == Len then
+		  ParsingString = ParsingString .. Sub
+		  ResultingTable[#ResultingTable] = ParsingString
+		  ParsingString = nil
+		elseif Sub == Delimiter
+		  ResultingTable[#ResultingTable] = ParsingString
+		  ParsingString = ""
+		else
+		  ParsingString = ParsingString .. Sub
+		end
+	  end
+	  return Object
 	end
+	
+	return false -- There are no matching Object types for Type input
   end
 }
 
