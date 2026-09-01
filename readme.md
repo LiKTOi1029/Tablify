@@ -75,7 +75,7 @@ Output:
 ```
 Returns `false` if failed and returns Tablified `Object` if successful.
 ### INDIVIDUAL
-This type takes a mandatory `Object` and no `Delimiter`. The `Object` must be either of type `number` or `string` 
+This type takes a mandatory `Object` and no `Delimiter`. The `Object` must be either of type `number` or `string` \
 Code:
 ```lua
 local Tablify = require("tablify")
