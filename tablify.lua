@@ -45,9 +45,8 @@ Tablify.Operations =
 	
 	return false -- There are no matching Object types for Type input
   end,
-  ["INDIVIDUAL"] = function(Object, _)
-	_ = nil
-	if type(Object) == ("string" or "number") then
+  ["INDIVIDUAL"] = function(Object)
+	if type(Object) == "string" or type(Object) == "number" then
 	  local ParsingString, ResultingTable, Object = "", {}, tostring(Object)
 	  local Len = Object:len()
 	  for Index = 1, Len, 1 do
@@ -56,7 +55,8 @@ Tablify.Operations =
 	  end
 	  return ResultingTable
 	end
-	return false
+	
+	return false -- There are no matching Object types for Type input
   end,
 }
 
@@ -68,7 +68,8 @@ function Tablify.Execute(Type, Object, Delimiter)
   end
   Type = Type:upper()
   if Tablify.Operations[Type] then
-	return Tablify.Operations[Type](Object, Delimiter)
+	if Delimiter then return Tablify.Operations[Type](Object, Delimiter)
+	else Tablify.Operations[Type](Object) end
   else return false end
 end
 
