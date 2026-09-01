@@ -4,6 +4,7 @@ Tablify.Operations =
   ["NORMAL"] = function(Object, Delimiter)
 	if type(Object) == "string" then
 	  local ParsingString, ResultingTable, Len = "", {}, Object:len()
+	  Delimiter = tostring(Delimiter)
 	  for Index = 1, Len, 1 do
 		local Sub = Object:sub(Index, Index)
 		if Index == Len and Sub == Delimiter then
@@ -23,6 +24,7 @@ Tablify.Operations =
 	  return ResultingTable
 	elseif type(Object) == "number" then
 	  local ParsingString, ResultingTable, Object = "", {}, tostring(Object)
+	  Delimiter = tostring(Delimiter)
 	  local Len = Object:len()
 	  for Index = 1, Len, 1 do
 		local Sub = Object:sub(Index, Index)
