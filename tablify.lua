@@ -22,6 +22,12 @@ Tablify.Operations =
 }
 
 function Tablify.Execute(Type, Object, Delimiter)
+  if type(Type) ~= "string" then
+	io.write("[TABLIFY]: The given type ", Type, " for the object ")
+	io.write(tostring(Object), " with the given delimiter ", tostring(Delimiter), " must be a string")
+	return false
+  end
+  Type = Type:upper()
   if Tablify.Operations[Type] then
 	return Tablify.Operations[Type](Object, Delimiter)
   else return false end
