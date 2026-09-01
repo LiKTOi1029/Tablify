@@ -20,7 +20,7 @@ Tablify.Operations =
 		  ParsingString = ParsingString .. Sub
 		end
 	  end
-	  return Object
+	  return ResultingTable
 	elseif type(Object) == "number" then
 	  local ParsingString, ResultingTable, Object = "", {}, tostring(Object)
 	  local Len = Object:len()
@@ -40,11 +40,24 @@ Tablify.Operations =
 		  ParsingString = ParsingString .. Sub
 		end
 	  end
-	  return Object
+	  return ResultingTable
 	end
 	
 	return false -- There are no matching Object types for Type input
-  end
+  end,
+  ["INDIVIDUAL"] = function(Object, _)
+	_ = nil
+	if type(Object) == ("string" or "number") then
+	  local ParsingString, ResultingTable, Object = "", {}, tostring(Object)
+	  local Len = Object:len()
+	  for Index = 1, Len, 1 do
+		local Sub = Object:sub(Index, Index)
+		ResultingTable[Index] = Sub
+	  end
+	  return ResultingTable
+	end
+	return false
+  end,
 }
 
 function Tablify.Execute(Type, Object, Delimiter)
