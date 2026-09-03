@@ -35,7 +35,7 @@ Tablify.Operations =
 		  ParsingString = ParsingString .. Sub
 		  ResultingTable[#ResultingTable] = tonumber(ParsingString)
 		  ParsingString = nil
-		elseif Sub == Delimiter
+		elseif Sub == Delimiter then
 		  ResultingTable[#ResultingTable] = ParsingString
 		  ParsingString = ""
 		else
