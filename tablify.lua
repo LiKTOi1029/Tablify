@@ -7,10 +7,7 @@ Tablify.Operations =
 	  Delimiter = tostring(Delimiter)
 	  for Index = 1, Len, 1 do
 		local Sub = Object:sub(Index, Index)
-		if Index == Len and Sub == Delimiter then
-		  ResultingTable[#ResultingTable] = ParsingString
-		  ParsingString = nil
-		elseif Index == Len then
+		if Index == Len then
 		  ParsingString = ParsingString .. Sub
 		  ResultingTable[#ResultingTable] = ParsingString
 		  ParsingString = nil
@@ -28,10 +25,7 @@ Tablify.Operations =
 	  local Len = Object:len()
 	  for Index = 1, Len, 1 do
 		local Sub = Object:sub(Index, Index)
-		if Index == Len and Sub == Delimiter then
-		  ResultingTable[#ResultingTable] = ParsingString
-		  ParsingString = nil
-		elseif Index == Len then
+		if Index == Len then
 		  ParsingString = ParsingString .. Sub
 		  ResultingTable[#ResultingTable] = tonumber(ParsingString)
 		  ParsingString = nil
