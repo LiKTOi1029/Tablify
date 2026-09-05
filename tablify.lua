@@ -6,13 +6,14 @@ Tablify.Operations =
 	  local ParsingString, ResultingTable, Len = "", {}, Object:len()
 	  Delimiter = tostring(Delimiter)
 	  for Index = 1, Len, 1 do
+		local NextIndex = #ResultingTable+1
 		local Sub = Object:sub(Index, Index)
 		if Index == Len then
 		  ParsingString = ParsingString .. Sub
-		  ResultingTable[Index] = ParsingString
+		  ResultingTable[NextIndex] = ParsingString
 		  ParsingString = nil
 		elseif Sub == Delimiter then
-		  ResultingTable[Index] = ParsingString
+		  ResultingTable[NextIndex] = ParsingString
 		  ParsingString = ""
 		else
 		  ParsingString = ParsingString .. Sub
@@ -24,13 +25,14 @@ Tablify.Operations =
 	  Delimiter = tostring(Delimiter)
 	  local Len = Object:len()
 	  for Index = 1, Len, 1 do
+		local NextIndex = #ResultingTable+1
 		local Sub = Object:sub(Index, Index)
 		if Index == Len then
 		  ParsingString = ParsingString .. Sub
-		  ResultingTable[Index] = tonumber(ParsingString)
+		  ResultingTable[NextIndex] = tonumber(ParsingString)
 		  ParsingString = nil
 		elseif Sub == Delimiter then
-		  ResultingTable[Index] = ParsingString
+		  ResultingTable[NextIndex] = ParsingString
 		  ParsingString = ""
 		else
 		  ParsingString = ParsingString .. Sub
