@@ -14,7 +14,7 @@ Tablify.Operations =
 		  ParsingString = ParsingString .. Sub
 		  ResultingTable[#ResultingTable] = ParsingString
 		  ParsingString = nil
-		elseif Sub == " " then
+		elseif Sub == Delimiter then
 		  ResultingTable[#ResultingTable] = ParsingString
 		  ParsingString = ""
 		else
