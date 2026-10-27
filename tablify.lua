@@ -45,7 +45,7 @@ Tablify.Operations =
   end,
   ["INDIVIDUAL"] = function(Object)
 	if type(Object) == "string" then 
-	  local ParsingString, ResultingTable, Object = "", {}, tostring(Object)
+	  local ParsingString, ResultingTable, Object = "", {}, Object
 	  local Len = Object:len()
 	  for Index = 1, Len, 1 do
 		local Sub = Object:sub(Index, Index)
@@ -64,6 +64,37 @@ Tablify.Operations =
 	
 	return false -- There are no matching Object types for Type input
   end,
+  ["INDIVIDUALMODIFIED"] = function(Object, Delimiter)
+	if type(Object) == "string" then
+	  local ParsingString, ResultingTable = "", {}
+	  local Len = Object:len()
+	  for Index = 1, Len, 1 do
+		local Sub = Object:sub(Index, Index)
+		if Index % Delimiter == 0 or Index == Len then
+		  ParsingString = ParsingString..Sub
+		  ResultingTable[#ResultingTable+1] = ParsingString
+		  ParsingString = ""
+		else
+		  ParsingString = ParsingString..Sub
+		end
+	  end
+	  return ResultingTable
+	elseif type(Object) == "number" then
+	  local ParsingString, ResultingTable, Object = "", {}, tostring(Object)
+	  local Len = Object:len()
+	  for Index = 1, Len, 1 do
+		local Sub = Object:sub(Index, Index)
+		if Index % Delimiter == 0 or Index == Len then
+		  ParsingString = ParsingString..Sub
+		  ResultingTable[#ResultingTable+1] = ParsingString
+		  ParsingString = ""
+		else
+		  ParsingString = ParsingString..Sub
+		end
+	  end
+	  return ResultingTable
+	end
+  end
 }
 
 function Tablify.Execute(Type, Object, Delimiter)
